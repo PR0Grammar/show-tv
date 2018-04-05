@@ -8,6 +8,9 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
+  resolve:{
+    extensions: ['.js', '.jsx', 'json']
+  },
   stats: {
     colors: true,
     reasons: true
@@ -16,7 +19,10 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['react']
+        }
       }
     ]
   }
