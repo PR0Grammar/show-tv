@@ -1,10 +1,10 @@
 import React from 'react'
+import NavBar from './NavBar'
 
 const Landing = () => (
   <div className='landing'>
-    <h1>showTV</h1>
-    <input type='text' placeholder='Shows, Movies, People...' />
-    </div>
+    <NavBar/>
+  </div>
 );
 
 export default Landing;
