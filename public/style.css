@@ -62,3 +62,7 @@ html {
 .navbar > a:active {
   color: #3DBB3D;
 }
+
+.carousel-title {
+  color:#000000
+}

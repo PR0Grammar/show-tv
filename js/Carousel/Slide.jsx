@@ -3,14 +3,20 @@ import { string } from 'prop-types';
 
 const Slide = (props) => {
   const styles = {
-    backgroundImage: `url(${props.imgUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center'
+    container:{
+      backgroundImage: `url(${props.imgUrl})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '1080'
+    },
+    title: {
+      color: '#000'
+    }
   }
 
   return (
-    <div className='props.content' style={styles}>
-      <h1>{props.title}</h1>
+    <div className='props.content' style={styles.container}>
+      <h1 className='carousel-title'>{props.title}</h1>
       <div>{props.description}</div>
     </div>
   );

@@ -5,10 +5,6 @@ import preload from '../../data.json';
 
 class Carousel extends React.Component {
 
-  static async fetchContent() {
-      return preload.shows;
-    }
-
   constructor(props){
     super(props);
 
@@ -19,19 +15,19 @@ class Carousel extends React.Component {
       descriptions: []
     }
     this.nextSlide = this.nextSlide.bind(this);
-    this.previousSlide = this.prevSlide.bind(this);
+    this.prevSlide = this.prevSlide.bind(this);
   }
 
   componentDidMount() {
-    this.fetchContent().then(shows => {
-      const imgUrls = shows.map(show => show.slideShowImg);
-      const  titles = shows.map(show => show.title);
-      const descriptions = shows.map(show => show.description);
-
+    Promise.resolve(preload.shows) // mimick GET request
+    .then(shows => {
+      const imgUrls = shows.map(show => show.slideShowImg)
+      const titles = shows.map(show => show.title)
+      const descriptions = shows.map(show => show.description)
       this.setState(prevState => ({
-        imgUrls: [... prevState.imgUrls, imgUrls ],
-        titles: [... prevState.titles, titles],
-        description: [... prevState.description, descriptions]
+              imgUrls: [... prevState.imgUrls, ...imgUrls ],
+              titles: [... prevState.titles, ... titles],
+              description: [... prevState.descriptions, ... descriptions]
       }));
     })
   }
@@ -52,7 +48,7 @@ class Carousel extends React.Component {
     const lastIndex = this.state.imgUrls.length - 1;
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === lastIndex;
-    const index =  shouldResetIndex ? 0 : imageIndex - 1;
+    const index =  shouldResetIndex ? 0 : imageIndex + 1;
 
     this.setState({
       imageIndex: index
@@ -65,15 +61,15 @@ class Carousel extends React.Component {
         <Arrow
           direction="left"
           click={ this.prevSlide }
-          glyph="&#9664;" />
+          arrow="&#9664;" />
         <Slide
-          imgUrl= { this.state.imgUrls[this.state.imageIndex] }
+          imgUrl= { `../../public/img/slideshow/${this.state.imgUrls[this.state.imageIndex]}` }
           title={this.state.titles[this.state.imageIndex]}
-          description = {this.state.titles[this.state.imageIndex]} />
-          <Arrow
-            direction="right"
-            click={ this.nextSlide }
-            glyph="&#9664;" />
+          description = {this.state.descriptions[this.state.imageIndex]} />
+        <Arrow
+          direction="right"
+          click={ this.nextSlide }
+          arrow="&#9654;" />
       </div>
     )
   }
