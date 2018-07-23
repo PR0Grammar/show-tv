@@ -28,6 +28,7 @@ html {
 .navbar {
   width: 100%;
   border-radius: 5px;
+  position: fixed;
   display: flex;
   flex-direction: row;
   align-items: center;

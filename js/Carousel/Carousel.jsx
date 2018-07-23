@@ -1,6 +1,5 @@
 import React from 'react';
 import Slide from './Slide';
-import Arrow from './Arrow';
 import preload from '../../data.json';
 
 class Carousel extends React.Component {
@@ -27,7 +26,7 @@ class Carousel extends React.Component {
       this.setState(prevState => ({
               imgUrls: [... prevState.imgUrls, ...imgUrls ],
               titles: [... prevState.titles, ... titles],
-              description: [... prevState.descriptions, ... descriptions]
+              descriptions: [... prevState.descriptions, ... descriptions]
       }));
     })
   }
@@ -58,18 +57,12 @@ class Carousel extends React.Component {
   render(){
     return(
       <div className='carousel'>
-        <Arrow
-          direction="left"
-          click={ this.prevSlide }
-          arrow="&#9664;" />
         <Slide
           imgUrl= { `../../public/img/slideshow/${this.state.imgUrls[this.state.imageIndex]}` }
           title={this.state.titles[this.state.imageIndex]}
+          leftArrowClick = {this.prevSlide}
+          rightArrowClick = {this.nextSlide}
           description = {this.state.descriptions[this.state.imageIndex]} />
-        <Arrow
-          direction="right"
-          click={ this.nextSlide }
-          arrow="&#9654;" />
       </div>
     )
   }

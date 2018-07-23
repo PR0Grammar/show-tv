@@ -9,7 +9,7 @@ const NavBar = () => (
     <a>ADD-ONS</a>
     <input type='text' placeholder='Shows, Movies, People...' />
     <a>NEHAL</a>
-    </div>
+  </div>
 );
 
 export default NavBar;
