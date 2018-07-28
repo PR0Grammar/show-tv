@@ -29,8 +29,13 @@ class Carousel extends React.Component {
               descriptions: [... prevState.descriptions, ... descriptions]
       }));
     })
+
+  this.autoNextSlide = setInterval(() => this.nextSlide(), 8000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.autoNextSlide)
+  }
 
   prevSlide() {
     const lastIndex = this.state.imgUrls.length - 1;
