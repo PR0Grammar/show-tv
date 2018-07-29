@@ -30,7 +30,6 @@ const Slide = (props) => {
       <Arrow
         direction="left"
         click={ props.leftArrowClick }
-        arrow="&#9664;"
       />
     <div style={styles.metaDataContainer}>
         <h1 className='carousel-title' style={styles.title}>{props.title}</h1>
@@ -39,7 +38,6 @@ const Slide = (props) => {
       <Arrow
         direction="right"
         click={ props.rightArrowClick }
-        arrow="&#9654;"
       />
     </div>
   );

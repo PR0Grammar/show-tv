@@ -1,11 +1,11 @@
 html {
   font-family: 'Montserrat', sans-serif;
-  background-color:#DCDCDC;
+  background-color:#E2E2E2;
 }
 
 .app {
   box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  background-color:#808080	;
+  background-color:#F1F1F1;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -14,6 +14,7 @@ html {
   justify-content: flex-start;
   text-align: center;
   color: #333;
+  max-width: 1600px;
 }
 
 @media (min-width: 1000px) {
